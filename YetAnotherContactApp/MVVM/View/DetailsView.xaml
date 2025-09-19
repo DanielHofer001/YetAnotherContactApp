@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="YetAnotherContactApp.MVVM.View.DetailsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:YetAnotherContactApp.MVVM.View"
+             xmlns:viewmodel="clr-namespace:YetAnotherContactApp.MVVM.ViewModel" 
+             d:DataContext="{d:DesignInstance Type=viewmodel:DetailsViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="525">
+    
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".1*"/>
+            <RowDefinition Height=".7*"/>
+            <RowDefinition Height=".2*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Contact Details" FontSize="24" Margin="10,0,0,0" FontWeight="Bold"/>
+
+        <Image Source="{Binding ContactImage}" VerticalAlignment="Top"
+               Grid.Column="0" Grid.Row="1" Margin="10,0,0,0"/>
+        
+        <StackPanel Margin="10" Grid.Row="1" Grid.Column="1">
+            <TextBox Text="{Binding NameText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     Margin="0,0,0,5" Height="30" VerticalContentAlignment="Center"/>
+            <TextBox Text="{Binding EmailText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     Margin="0,0,0,5" Height="30" VerticalContentAlignment="Center"/>
+            <TextBox Text="{Binding PhoneText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     Margin="0,0,0,5" Height="30" VerticalContentAlignment="Center"/>
+            <TextBlock Text="{Binding ImgUrlText}" 
+                       Margin="0,0,0,5" Height="30" Background="LightGray"/>
+
+            <Button Content="Change Contact Image" Height="40" Margin="0,0,0,5" FontSize="21"
+                    Command="{Binding ChangeImageCommand}"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="Update" 
+                Command="{Binding UpdateCommand}" Background="LimeGreen" Grid.Row="2"
+                Margin="20" Height="40" Width="100" FontWeight="Bold"
+                FontSize="21"/>
+                <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Delete" 
+                Command="{Binding DeleteCommand}" Background="Red" Grid.Row="2"
+                Margin="20" Height="40" Width="100" FontWeight="Bold" Grid.Column="1"
+                FontSize="21" CommandParameter="{Binding}"/>
+            </StackPanel>
+        </StackPanel>
+        
+        <Button HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="Back" 
+                Command="{Binding BackCommand}" Background="Gray" Grid.Row="2"
+                Margin="20" Height="40" Width="100" FontWeight="Bold" Grid.ColumnSpan="2"
+                FontSize="21" CommandParameter="{Binding}"/>
+    </Grid>
+</UserControl>

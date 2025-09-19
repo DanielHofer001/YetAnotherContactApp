@@ -1,0 +1,27 @@
+@YetAnotherContactApi_HostAddress = https://localhost:7081
+
+###
+### Create a new contact (POST)
+POST {{YetAnotherContactApi_HostAddress}}/api/contacts
+Content-Type: application/json
+
+{
+  "name": "Alice Johnson",
+  "phone": "555-1234"
+}
+
+### Get all contacts (GET)
+GET {{YetAnotherContactApi_HostAddress}}/api/contacts
+
+### Update a contact (PUT)
+PUT {{YetAnotherContactApi_HostAddress}}/api/contacts
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Alice J.",
+  "phone": "555-5678"
+}
+
+### Delete a contact by ID (DELETE)
+DELETE {{YetAnotherContactApi_HostAddress}}/api/contacts/1
